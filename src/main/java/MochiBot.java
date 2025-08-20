@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class MochiBot {
-    public static ArrayList<String> itemList = new ArrayList<>(100);
+    public static ArrayList<Task> itemList = new ArrayList<>(100);
 
     public static void main(String[] args) {
         boolean has_exit = false;
@@ -36,9 +36,10 @@ public class MochiBot {
     }
 
     public static void storeItem(String item) {
-        itemList.add(item);
+        Task task = new Task(item);
+        itemList.add(task);
         System.out.println("______________________________________________");
-        System.out.println("added: " + item);
+        System.out.println("added: " + task.getDescription());
         System.out.println("______________________________________________");
     }
 
