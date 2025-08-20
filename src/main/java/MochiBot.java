@@ -6,22 +6,20 @@ public class MochiBot {
     public static ArrayList<Task> taskList = new ArrayList<>(100);
 
     public static void main(String[] args) {
-        boolean has_exit = false;
+        Scanner scan = new Scanner(System.in);
         int taskIndex;
         String[] taskNameArray;
         String task;
 
         greet();
-        while (!has_exit) {
-            Scanner scan = new Scanner(System.in);
+        while (true) {
             String userInput = scan.nextLine();
             String[] inputArray = userInput.split(" ");
             String command = inputArray[0];
             switch(command) {
                 case "bye":
                     exit();
-                    has_exit = true;
-                    break;
+                    System.exit(0);
                 case "list":
                     displayTasks();
                     break;
