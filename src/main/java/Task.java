@@ -7,9 +7,9 @@ public class Task {
         this.isDone = false;
     }
 
-    public Task(String taskName, boolean isDone) {
+    public Task(String taskName) {
         this.taskName = taskName;
-        this.isDone = isDone;
+        this.isDone = false;
     }
 
     public void markDone() {
