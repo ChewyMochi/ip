@@ -8,6 +8,8 @@ public class MochiBot {
     public static void main(String[] args) {
         boolean has_exit = false;
         int taskIndex;
+        String[] taskNameArray;
+        String task;
 
         greet();
         while (!has_exit) {
@@ -32,9 +34,17 @@ public class MochiBot {
                     unmarkTask(taskIndex);
                     break;
                 case "todo":
-                    String[] subInputArray = Arrays.copyOfRange(inputArray, 1, inputArray.length);
-                    String task = String.join(" ", subInputArray);
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, inputArray.length);
+                    task = String.join(" ", taskNameArray);
                     addTodo(task);
+                    break;
+                case "deadline":
+                    int dateIndex = findStringIndex(inputArray, "/by");
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, dateIndex);
+                    task = String.join(" ", taskNameArray);
+                    String[] dateArray = Arrays.copyOfRange(inputArray, dateIndex + 1, inputArray.length);
+                    String deadlineDate = String.join(" ", dateArray);
+                    addDeadline(task, deadlineDate);
                     break;
             }
         }
@@ -86,6 +96,25 @@ public class MochiBot {
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
         System.out.println(currTodo);
+        System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
+        System.out.println("______________________________________________");
+    }
+
+    public static int findStringIndex(String[] strArray, String item) {
+        for (int i = 0; i < strArray.length; i++) {
+            if (strArray[i].equals(item)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void addDeadline(String task, String date) {
+        Deadline currDeadline = new Deadline(task, date);
+        taskList.add(currDeadline);
+        System.out.println("______________________________________________");
+        System.out.println("Got it. I've added this task:");
+        System.out.println(currDeadline);
         System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
         System.out.println("______________________________________________");
     }
