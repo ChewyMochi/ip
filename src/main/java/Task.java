@@ -1,14 +1,9 @@
 public class Task {
-    private final String taskName;
-    private boolean isDone;
+    protected String description;
+    protected boolean isDone;
 
-    public Task() {
-        this.taskName = "";
-        this.isDone = false;
-    }
-
-    public Task(String taskName) {
-        this.taskName = taskName;
+    public Task(String description) {
+        this.description = description;
         this.isDone = false;
     }
 
@@ -20,15 +15,12 @@ public class Task {
         this.isDone = false;
     }
 
+    public String getStatusIcon() {
+        return (isDone ? "X" : " ");
+    }
+
     @Override
     public String toString() {
-        String printStatement = "";
-        if (this.isDone) {
-            printStatement += "[X] ";
-        } else {
-            printStatement += "[ ] ";
-        }
-        printStatement += this.taskName;
-        return printStatement;
+        return String.format("[%s] %s", getStatusIcon(), this.description);
     }
 }
