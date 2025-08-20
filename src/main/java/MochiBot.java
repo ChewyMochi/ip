@@ -10,7 +10,9 @@ public class MochiBot {
         greet();
         while (!has_exit) {
             Scanner scan = new Scanner(System.in);
-            String command = scan.nextLine();
+            String userInput = scan.nextLine();
+            String[] inputArray = userInput.split(" ");
+            String command = inputArray[0];
             switch(command) {
                 case "bye":
                     exit();
@@ -20,11 +22,11 @@ public class MochiBot {
                     displayItems();
                     break;
                 case "mark":
-                    int taskIndex = scan.nextInt();
+                    int taskIndex = Integer.parseInt(inputArray[1]);
                     markTask(taskIndex);
                     break;
                 default:
-                    addTask(command);
+                    addTask(userInput);
             }
         }
     }
@@ -60,7 +62,7 @@ public class MochiBot {
     }
 
     public static void markTask(int taskIndex) {
-        Task currTask = taskList.get(taskIndex + 1);
+        Task currTask = taskList.get(taskIndex - 1);
         currTask.markDone();
         System.out.println("______________________________________________");
         System.out.println("Nice! I've marked this task as done:");
