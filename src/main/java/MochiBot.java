@@ -47,14 +47,6 @@ public class MochiBot {
         System.out.println("______________________________________________");
     }
 
-    public static void addTask(String item) {
-        Task task = new Task(item);
-        taskList.add(task);
-        System.out.println("______________________________________________");
-        System.out.println("added: " + task.getDescription());
-        System.out.println("______________________________________________");
-    }
-
     public static void displayItems() {
         System.out.println("______________________________________________");
         System.out.println("Here are the tasks in your list:");
