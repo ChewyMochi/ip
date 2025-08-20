@@ -35,6 +35,7 @@ public class MochiBot {
                     String[] subInputArray = Arrays.copyOfRange(inputArray, 1, inputArray.length);
                     String task = String.join(" ", subInputArray);
                     addTodo(task);
+                    break;
             }
         }
     }
