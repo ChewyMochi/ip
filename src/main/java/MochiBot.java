@@ -46,6 +46,17 @@ public class MochiBot {
                     String deadlineDate = String.join(" ", dateArray);
                     addDeadline(task, deadlineDate);
                     break;
+                case "event":
+                    int dateStartIndex = findStringIndex(inputArray, "/from");
+                    int dateEndIndex = findStringIndex(inputArray, "/to");
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, dateStartIndex);
+                    task = String.join(" ", taskNameArray);
+                    String[] dateStartArray = Arrays.copyOfRange(inputArray, dateStartIndex + 1, dateEndIndex);
+                    String eventStartDate = String.join(" ", dateStartArray);
+                    String[] dateEndArray = Arrays.copyOfRange(inputArray, dateEndIndex + 1, inputArray.length);
+                    String eventEndDate = String.join(" ", dateEndArray);
+                    addEvent(task, eventStartDate, eventEndDate);
+                    break;
             }
         }
     }
@@ -115,6 +126,16 @@ public class MochiBot {
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
         System.out.println(currDeadline);
+        System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
+        System.out.println("______________________________________________");
+    }
+
+    public static void addEvent(String task, String startDate, String endDate) {
+        Event currEvent = new Event(task, startDate, endDate);
+        taskList.add(currEvent);
+        System.out.println("______________________________________________");
+        System.out.println("Got it. I've added this task:");
+        System.out.println(currEvent);
         System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
         System.out.println("______________________________________________");
     }
