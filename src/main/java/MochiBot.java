@@ -14,6 +14,8 @@ public class MochiBot {
             if (input.equals("bye")) {
                 exit();
                 has_exit = true;
+            } else if (input.equals("list")) {
+                displayItems();
             } else {
                 storeItem(input);
             }
@@ -37,6 +39,14 @@ public class MochiBot {
         itemList.add(item);
         System.out.println("______________________________________________");
         System.out.println("added: " + item);
+        System.out.println("______________________________________________");
+    }
+
+    public static void displayItems() {
+        System.out.println("______________________________________________");
+        for (int i = 0; i < itemList.size(); i++) {
+            System.out.println(i+1 + ". " + itemList.get(i));
+        }
         System.out.println("______________________________________________");
     }
 }
