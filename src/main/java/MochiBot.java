@@ -10,14 +10,17 @@ public class MochiBot {
         greet();
         while (!has_exit) {
             Scanner scan = new Scanner(System.in);
-            String input = scan.nextLine();
-            if (input.equals("bye")) {
-                exit();
-                has_exit = true;
-            } else if (input.equals("list")) {
-                displayItems();
-            } else {
-                storeItem(input);
+            String command = scan.nextLine();
+            switch(command) {
+                case "bye":
+                    exit();
+                    has_exit = true;
+                    break;
+                case "list":
+                    displayItems();
+                    break;
+                default:
+                    storeItem(command);
             }
         }
     }
