@@ -1,8 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MochiBot {
+    public static ArrayList<String> itemList = new ArrayList<>(100);
+
     public static void main(String[] args) {
         boolean has_exit = false;
+
         greet();
         while (!has_exit) {
             Scanner scan = new Scanner(System.in);
@@ -11,9 +15,7 @@ public class MochiBot {
                 exit();
                 has_exit = true;
             } else {
-                System.out.println("______________________________________________");
-                System.out.println(input);
-                System.out.println("______________________________________________");
+                storeItem(input);
             }
         }
     }
@@ -28,6 +30,13 @@ public class MochiBot {
     public static void exit() {
         System.out.println("______________________________________________");
         System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("______________________________________________");
+    }
+
+    public static void storeItem(String item) {
+        itemList.add(item);
+        System.out.println("______________________________________________");
+        System.out.println("added: " + item);
         System.out.println("______________________________________________");
     }
 }
