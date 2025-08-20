@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class MochiBot {
-    public static ArrayList<Task> itemList = new ArrayList<>(100);
+    public static ArrayList<Task> taskList = new ArrayList<>(100);
 
     public static void main(String[] args) {
         boolean has_exit = false;
@@ -18,6 +18,10 @@ public class MochiBot {
                     break;
                 case "list":
                     displayItems();
+                    break;
+                case "mark":
+                    int taskIndex = scan.nextInt();
+                    markTask(taskIndex);
                     break;
                 default:
                     addTask(command);
@@ -40,7 +44,7 @@ public class MochiBot {
 
     public static void addTask(String item) {
         Task task = new Task(item);
-        itemList.add(task);
+        taskList.add(task);
         System.out.println("______________________________________________");
         System.out.println("added: " + task.getDescription());
         System.out.println("______________________________________________");
@@ -48,9 +52,19 @@ public class MochiBot {
 
     public static void displayItems() {
         System.out.println("______________________________________________");
-        for (int i = 0; i < itemList.size(); i++) {
-            System.out.println(i+1 + ". " + itemList.get(i));
+        System.out.println("Here are the tasks in your list:");
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println(i+1 + ". " + taskList.get(i));
         }
+        System.out.println("______________________________________________");
+    }
+
+    public static void markTask(int taskIndex) {
+        Task currTask = taskList.get(taskIndex + 1);
+        currTask.markDone();
+        System.out.println("______________________________________________");
+        System.out.println("Nice! I've marked this task as done:");
+        System.out.println(currTask);
         System.out.println("______________________________________________");
     }
 }
