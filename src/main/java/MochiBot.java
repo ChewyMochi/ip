@@ -6,6 +6,7 @@ public class MochiBot {
 
     public static void main(String[] args) {
         boolean has_exit = false;
+        int taskIndex;
 
         greet();
         while (!has_exit) {
@@ -22,8 +23,12 @@ public class MochiBot {
                     displayItems();
                     break;
                 case "mark":
-                    int taskIndex = Integer.parseInt(inputArray[1]);
+                    taskIndex = Integer.parseInt(inputArray[1]);
                     markTask(taskIndex);
+                    break;
+                case "unmark":
+                    taskIndex = Integer.parseInt(inputArray[1]);
+                    unmarkTask(taskIndex);
                     break;
                 default:
                     addTask(userInput);
@@ -66,6 +71,15 @@ public class MochiBot {
         currTask.markDone();
         System.out.println("______________________________________________");
         System.out.println("Nice! I've marked this task as done:");
+        System.out.println(currTask);
+        System.out.println("______________________________________________");
+    }
+
+    public static void unmarkTask(int taskIndex) {
+        Task currTask = taskList.get(taskIndex - 1);
+        currTask.markNotDone();
+        System.out.println("______________________________________________");
+        System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(currTask);
         System.out.println("______________________________________________");
     }
