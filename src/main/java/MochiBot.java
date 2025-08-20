@@ -20,7 +20,7 @@ public class MochiBot {
                     displayItems();
                     break;
                 default:
-                    storeItem(command);
+                    addTask(command);
             }
         }
     }
@@ -38,7 +38,7 @@ public class MochiBot {
         System.out.println("______________________________________________");
     }
 
-    public static void storeItem(String item) {
+    public static void addTask(String item) {
         Task task = new Task(item);
         itemList.add(task);
         System.out.println("______________________________________________");
