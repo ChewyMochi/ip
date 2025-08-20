@@ -30,8 +30,6 @@ public class MochiBot {
                     taskIndex = Integer.parseInt(inputArray[1]);
                     unmarkTask(taskIndex);
                     break;
-                default:
-                    addTask(userInput);
             }
         }
     }
