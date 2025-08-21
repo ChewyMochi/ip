@@ -14,6 +14,7 @@ public class MochiBot {
         greet();
         while (true) {
             String userInput = scan.nextLine();
+            userInput = userInput.trim();
             String[] inputArray = userInput.split(" ");
             String command = inputArray[0];
             try {
