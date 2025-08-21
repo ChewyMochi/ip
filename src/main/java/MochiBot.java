@@ -102,6 +102,18 @@ public class MochiBot {
                         }
                         addEvent(task, eventStartDate, eventEndDate);
                         break;
+                    case "delete":
+                        try {
+                            taskIndex = Integer.parseInt(inputArray[1]);
+                        } catch (NumberFormatException e) {
+                            throw new MochiBotException.InvalidTaskIndexException();
+                        }
+                        if (isValidTaskNum(taskIndex)) {
+                            deleteTask(taskIndex);
+                        } else {
+                            throw new MochiBotException.InvalidTaskIndexException();
+                        }
+                        break;
                     default:
                         throw new MochiBotException.InvalidCommandException();
                 }
@@ -186,6 +198,15 @@ public class MochiBot {
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
         System.out.println(currEvent);
+        System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
+        System.out.println("______________________________________________");
+    }
+
+    public static void deleteTask(int taskIndex) {
+        Task currTask = taskList.remove(taskIndex - 1);
+        System.out.println("______________________________________________");
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(currTask);
         System.out.printf("Now you have %d task(s) in the list.%n", taskList.size());
         System.out.println("______________________________________________");
     }
