@@ -70,4 +70,15 @@ public class MochiBotException extends Exception {
             super(errorMessage);
         }
     }
+
+    public static class MissingTaskIndexException extends MochiBotException {
+        private static final String errorMessage = """
+                ______________________________________________
+                Your task number cannot be empty ( ◡̀_◡́).
+                ______________________________________________""";
+
+        public MissingTaskIndexException() {
+            super(errorMessage);
+        }
+    }
 }

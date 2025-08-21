@@ -35,6 +35,8 @@ public class MochiBot {
                             taskIndex = Integer.parseInt(inputArray[1]);
                         } catch (NumberFormatException e) {
                             throw new MochiBotException.InvalidTaskIndexException();
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            throw new MochiBotException.MissingTaskIndexException();
                         }
                         if (isValidTaskNum(taskIndex)) {
                             markTask(taskIndex);
@@ -47,6 +49,8 @@ public class MochiBot {
                             taskIndex = Integer.parseInt(inputArray[1]);
                         } catch (NumberFormatException e) {
                             throw new MochiBotException.InvalidTaskIndexException();
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            throw new MochiBotException.MissingTaskIndexException();
                         }
                         if (isValidTaskNum(taskIndex)) {
                             unmarkTask(taskIndex);
@@ -107,6 +111,8 @@ public class MochiBot {
                             taskIndex = Integer.parseInt(inputArray[1]);
                         } catch (NumberFormatException e) {
                             throw new MochiBotException.InvalidTaskIndexException();
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            throw new MochiBotException.MissingTaskIndexException();
                         }
                         if (isValidTaskNum(taskIndex)) {
                             deleteTask(taskIndex);
