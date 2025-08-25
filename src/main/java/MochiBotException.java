@@ -9,7 +9,7 @@ public class MochiBotException extends Exception {
                 Invalid command! Please try again ~('O')~.
                 ______________________________________________""";
 
-         public InvalidCommandException() {
+        public InvalidCommandException() {
             super(errorMessage);
         }
     }
