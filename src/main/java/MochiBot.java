@@ -19,110 +19,110 @@ public class MochiBot {
             String command = inputArray[0];
             try {
                 switch (command) {
-                    case "bye":
-                        exit();
-                        System.exit(0);
-                    case "list":
-                        if (taskList.isEmpty()) {
-                            System.out.println("______________________________________________");
-                            System.out.println("Your list is empty! Feel free to add tasks 6('v')9.");
-                            System.out.println("______________________________________________");
-                        } else {
-                            displayTasks();
-                        }
-                        break;
-                    case "mark":
-                        try {
-                            taskIndex = Integer.parseInt(inputArray[1]);
-                        } catch (NumberFormatException e) {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            throw new MochiBotException.MissingTaskIndexException();
-                        }
-                        if (isValidTaskNum(taskIndex)) {
-                            markTask(taskIndex);
-                        } else {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        }
-                        break;
-                    case "unmark":
-                        try {
-                            taskIndex = Integer.parseInt(inputArray[1]);
-                        } catch (NumberFormatException e) {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            throw new MochiBotException.MissingTaskIndexException();
-                        }
-                        if (isValidTaskNum(taskIndex)) {
-                            unmarkTask(taskIndex);
-                        } else {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        }
-                        break;
-                    case "todo":
-                        taskNameArray = Arrays.copyOfRange(inputArray, 1, inputArray.length);
-                        task = String.join(" ", taskNameArray);
-                        task = task.trim();
-                        if (task.isEmpty()) {
-                            throw new MochiBotException.MissingTaskNameException();
-                        }
-                        addTodo(task);
-                        break;
-                    case "deadline":
-                        int dateIndex = findStringIndex(inputArray, "/by");
-                        if (dateIndex == -1) {
-                            throw new MochiBotException.MissingDeadlineArgumentsException();
-                        }
-                        taskNameArray = Arrays.copyOfRange(inputArray, 1, dateIndex);
-                        task = String.join(" ", taskNameArray);
-                        task = task.trim();
-                        if (task.isEmpty()) {
-                            throw new MochiBotException.MissingTaskNameException();
-                        }
-                        String[] dateArray = Arrays.copyOfRange(inputArray, dateIndex + 1, inputArray.length);
-                        String deadlineDate = String.join(" ", dateArray);
-                        if (deadlineDate.isEmpty()) {
-                            throw new MochiBotException.MissingDateException();
-                        }
-                        addDeadline(task, deadlineDate);
-                        break;
-                    case "event":
-                        int dateStartIndex = findStringIndex(inputArray, "/from");
-                        int dateEndIndex = findStringIndex(inputArray, "/to");
-                        if (dateStartIndex == -1 || dateEndIndex == -1) {
-                            throw new MochiBotException.MissingEventArgumentsException();
-                        }
-                        taskNameArray = Arrays.copyOfRange(inputArray, 1, dateStartIndex);
-                        task = String.join(" ", taskNameArray);
-                        task = task.trim();
-                        if (task.isEmpty()) {
-                            throw new MochiBotException.MissingTaskNameException();
-                        }
-                        String[] dateStartArray = Arrays.copyOfRange(inputArray, dateStartIndex + 1, dateEndIndex);
-                        String eventStartDate = String.join(" ", dateStartArray);
-                        String[] dateEndArray = Arrays.copyOfRange(inputArray, dateEndIndex + 1, inputArray.length);
-                        String eventEndDate = String.join(" ", dateEndArray);
-                        if (eventStartDate.isEmpty() || eventEndDate.isEmpty()) {
-                            throw new MochiBotException.MissingDateException();
-                        }
-                        addEvent(task, eventStartDate, eventEndDate);
-                        break;
-                    case "delete":
-                        try {
-                            taskIndex = Integer.parseInt(inputArray[1]);
-                        } catch (NumberFormatException e) {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            throw new MochiBotException.MissingTaskIndexException();
-                        }
-                        if (isValidTaskNum(taskIndex)) {
-                            deleteTask(taskIndex);
-                        } else {
-                            throw new MochiBotException.InvalidTaskIndexException();
-                        }
-                        break;
-                    default:
-                        throw new MochiBotException.InvalidCommandException();
+                case "bye":
+                    exit();
+                    System.exit(0);
+                case "list":
+                    if (taskList.isEmpty()) {
+                        System.out.println("______________________________________________");
+                        System.out.println("Your list is empty! Feel free to add tasks 6('v')9.");
+                        System.out.println("______________________________________________");
+                    } else {
+                        displayTasks();
+                    }
+                    break;
+                case "mark":
+                    try {
+                        taskIndex = Integer.parseInt(inputArray[1]);
+                    } catch (NumberFormatException e) {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        throw new MochiBotException.MissingTaskIndexException();
+                    }
+                    if (isValidTaskNum(taskIndex)) {
+                        markTask(taskIndex);
+                    } else {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    }
+                    break;
+                case "unmark":
+                    try {
+                        taskIndex = Integer.parseInt(inputArray[1]);
+                    } catch (NumberFormatException e) {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        throw new MochiBotException.MissingTaskIndexException();
+                    }
+                    if (isValidTaskNum(taskIndex)) {
+                        unmarkTask(taskIndex);
+                    } else {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    }
+                    break;
+                case "todo":
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, inputArray.length);
+                    task = String.join(" ", taskNameArray);
+                    task = task.trim();
+                    if (task.isEmpty()) {
+                        throw new MochiBotException.MissingTaskNameException();
+                    }
+                    addTodo(task);
+                    break;
+                case "deadline":
+                    int dateIndex = findStringIndex(inputArray, "/by");
+                    if (dateIndex == -1) {
+                        throw new MochiBotException.MissingDeadlineArgumentsException();
+                    }
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, dateIndex);
+                    task = String.join(" ", taskNameArray);
+                    task = task.trim();
+                    if (task.isEmpty()) {
+                        throw new MochiBotException.MissingTaskNameException();
+                    }
+                    String[] dateArray = Arrays.copyOfRange(inputArray, dateIndex + 1, inputArray.length);
+                    String deadlineDate = String.join(" ", dateArray);
+                    if (deadlineDate.isEmpty()) {
+                        throw new MochiBotException.MissingDateException();
+                    }
+                    addDeadline(task, deadlineDate);
+                    break;
+                case "event":
+                    int dateStartIndex = findStringIndex(inputArray, "/from");
+                    int dateEndIndex = findStringIndex(inputArray, "/to");
+                    if (dateStartIndex == -1 || dateEndIndex == -1) {
+                        throw new MochiBotException.MissingEventArgumentsException();
+                    }
+                    taskNameArray = Arrays.copyOfRange(inputArray, 1, dateStartIndex);
+                    task = String.join(" ", taskNameArray);
+                    task = task.trim();
+                    if (task.isEmpty()) {
+                        throw new MochiBotException.MissingTaskNameException();
+                    }
+                    String[] dateStartArray = Arrays.copyOfRange(inputArray, dateStartIndex + 1, dateEndIndex);
+                    String eventStartDate = String.join(" ", dateStartArray);
+                    String[] dateEndArray = Arrays.copyOfRange(inputArray, dateEndIndex + 1, inputArray.length);
+                    String eventEndDate = String.join(" ", dateEndArray);
+                    if (eventStartDate.isEmpty() || eventEndDate.isEmpty()) {
+                        throw new MochiBotException.MissingDateException();
+                    }
+                    addEvent(task, eventStartDate, eventEndDate);
+                    break;
+                case "delete":
+                    try {
+                        taskIndex = Integer.parseInt(inputArray[1]);
+                    } catch (NumberFormatException e) {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        throw new MochiBotException.MissingTaskIndexException();
+                    }
+                    if (isValidTaskNum(taskIndex)) {
+                        deleteTask(taskIndex);
+                    } else {
+                        throw new MochiBotException.InvalidTaskIndexException();
+                    }
+                    break;
+                default:
+                    throw new MochiBotException.InvalidCommandException();
                 }
             } catch (MochiBotException e) {
                 System.out.println(e.getMessage());
@@ -147,7 +147,7 @@ public class MochiBot {
         System.out.println("______________________________________________");
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < taskList.size(); i++) {
-            System.out.println(i+1 + ". " + taskList.get(i));
+            System.out.println(i + 1 + ". " + taskList.get(i));
         }
         System.out.println("______________________________________________");
     }
