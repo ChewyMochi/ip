@@ -51,7 +51,7 @@ public class MochiBotException extends Exception {
         private static final String errorMessage = """
                 ______________________________________________
                 Incorrect format detected (ꐦㅍ_ㅍ). Format is:
-                \ndeadline <name> /by <date-time>
+                deadline <name> /by <date-time>
                 ______________________________________________""";
 
         public MissingDeadlineArgumentsException() {
