@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -135,6 +136,11 @@ public class MochiBot {
         System.out.println("Hello! I'm MochiBot ( '3')9.");
         System.out.println("What can I do for you?");
         System.out.println("______________________________________________");
+        try {
+            taskList = Storage.loadTaskList();
+        } catch (FileNotFoundException e) {
+            System.out.println("Scanner cannot find file to read.");
+        }
     }
 
     public static void exit() {
