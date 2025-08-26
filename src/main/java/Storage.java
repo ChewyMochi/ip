@@ -8,6 +8,12 @@ import java.util.Scanner;
 public class Storage {
     private static final String FILE_PATH = "./src/data/MochiBot.txt";
 
+    /**
+     * Writes contents of taskList into a text file on the device.
+     *
+     * @param taskList {@link ArrayList} containing {@link Task} objects.
+     * @throws RuntimeException If there is an error during the write operation into the text file.
+     */
     public static void saveTaskList(ArrayList<Task> taskList) {
         File file = new File(FILE_PATH);
         file.getParentFile().mkdirs();
@@ -21,6 +27,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads contents of text file containing tasks into the Task List.
+     *
+     * @return {@link ArrayList} containing {@link Task} objects.
+     * @throws FileNotFoundException If the file cannot be found by the Scanner object
+     */
     public static ArrayList<Task> loadTaskList() throws FileNotFoundException {
         ArrayList<Task> taskList = new ArrayList<>(100);
         File file = new File(FILE_PATH);
@@ -35,7 +47,13 @@ public class Storage {
         return taskList;
     }
 
-    public static String formatSaveTask(Task task) {
+    /**
+     * Formats the tasks in the Task List into a format suitable for the text file.
+     *
+     * @param task {@link Task} object
+     * @return String representation of the tasks suitable for the text file.
+     */
+    private static String formatSaveTask(Task task) {
         String taskType = task.getType();
         return switch (taskType) {
             case "[T]" -> String.format("T | %B | %s", task.isDone(), task.getDescription());
@@ -51,7 +69,13 @@ public class Storage {
         };
     }
 
-    public static Task formatLoadTask(String taskData) {
+    /**
+     * Converts string representation of tasks in the text file into Task objects
+     *
+     * @param taskData String representation of a single task from the text file.
+     * @return {@link Task} object
+     */
+    private static Task formatLoadTask(String taskData) {
         String[] taskParams = taskData.split(" \\| ");
         String taskType = taskParams[0];
         boolean isDone = taskParams[1].equals("TRUE");
