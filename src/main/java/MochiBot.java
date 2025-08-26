@@ -138,6 +138,7 @@ public class MochiBot {
     }
 
     public static void exit() {
+        Storage.saveTaskList(taskList);
         System.out.println("______________________________________________");
         System.out.println("Bye! Hope to see you again soon ( ;-;)>.");
         System.out.println("______________________________________________");
