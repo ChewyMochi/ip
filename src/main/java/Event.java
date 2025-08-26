@@ -2,6 +2,7 @@ public class Event extends Task {
     private final String eventStart;
     private final String eventEnd;
 
+    // TODO: Change eventStart and eventEnd to be LocalDateTime objects instead of String objects
     public Event(String description, String eventStart, String eventEnd) {
         super(description);
         this.eventStart = eventStart;
