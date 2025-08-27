@@ -1,7 +1,9 @@
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 public class MochiBot {
     public static ArrayList<Task> taskList = new ArrayList<>(100);
@@ -85,7 +87,9 @@ public class MochiBot {
                     if (deadlineDate.isEmpty()) {
                         throw new MochiBotException.MissingDateException();
                     }
-                    addDeadline(task, deadlineDate);
+                    LocalDateTime deadlineDateTime = LocalDateTime
+                            .parse(deadlineDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    addDeadline(task, deadlineDateTime);
                     break;
                 case "event":
                     int dateStartIndex = findStringIndex(inputArray, "/from");
@@ -106,7 +110,11 @@ public class MochiBot {
                     if (eventStartDate.isEmpty() || eventEndDate.isEmpty()) {
                         throw new MochiBotException.MissingDateException();
                     }
-                    addEvent(task, eventStartDate, eventEndDate);
+                    LocalDateTime eventStartDateTime = LocalDateTime
+                            .parse(eventStartDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    LocalDateTime eventEndDateTime = LocalDateTime
+                            .parse(eventEndDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    addEvent(task, eventStartDateTime, eventEndDateTime);
                     break;
                 case "delete":
                     try {
@@ -196,8 +204,8 @@ public class MochiBot {
         return -1;
     }
 
-    public static void addDeadline(String task, String date) {
-        Deadline currDeadline = new Deadline(task, date);
+    public static void addDeadline(String task, LocalDateTime dateTime) {
+        Deadline currDeadline = new Deadline(task, dateTime);
         taskList.add(currDeadline);
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
@@ -206,8 +214,8 @@ public class MochiBot {
         System.out.println("______________________________________________");
     }
 
-    public static void addEvent(String task, String startDate, String endDate) {
-        Event currEvent = new Event(task, startDate, endDate);
+    public static void addEvent(String task, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        Event currEvent = new Event(task, startDateTime, endDateTime);
         taskList.add(currEvent);
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
