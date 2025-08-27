@@ -63,7 +63,7 @@ public class MochiBotException extends Exception {
         private static final String errorMessage = """
                 ______________________________________________
                 Incorrect format detected (ꐦㅍ_ㅍ). Format is:
-                \nevents <name> /from <date-time> /to <date-time>
+                events <name> /from <date-time> /to <date-time>
                 ______________________________________________""";
 
         public MissingEventArgumentsException() {
