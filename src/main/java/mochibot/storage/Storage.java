@@ -1,3 +1,7 @@
+package mochibot.storage;
+
+import mochibot.task.*;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -75,7 +79,7 @@ public class Storage {
     }
 
     /**
-     * Converts string representation of tasks in the text file into Task objects
+     * Converts string representation of tasks in the text file into MochiBot.Task objects
      *
      * @param taskData String representation of a single task from the text file.
      * @return {@link Task} object

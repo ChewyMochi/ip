@@ -1,3 +1,8 @@
+package mochibot.ui;
+
+import mochibot.task.Task;
+import mochibot.task.TaskList;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -13,7 +18,7 @@ public class Ui {
 
     public void printGreeting() {
         System.out.println("______________________________________________");
-        System.out.println("Hello! I'm MochiBot ( '3')9.");
+        System.out.println("Hello! I'm MochiBot.MochiBot ( '3')9.");
         System.out.println("What can I do for you?");
         System.out.println("______________________________________________");
     }

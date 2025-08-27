@@ -1,3 +1,5 @@
+package mochibot;
+
 public class MochiBotException extends Exception {
     public MochiBotException(String errorMessage) {
         super(errorMessage);

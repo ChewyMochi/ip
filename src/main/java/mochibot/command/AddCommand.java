@@ -1,3 +1,10 @@
+package mochibot.command;
+
+import mochibot.storage.Storage;
+import mochibot.task.Task;
+import mochibot.task.TaskList;
+import mochibot.ui.Ui;
+
 public class AddCommand extends Command {
     private final Task task;
 

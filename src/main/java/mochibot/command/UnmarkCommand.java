@@ -1,3 +1,11 @@
+package mochibot.command;
+
+import mochibot.*;
+import mochibot.storage.Storage;
+import mochibot.task.Task;
+import mochibot.task.TaskList;
+import mochibot.ui.Ui;
+
 public class UnmarkCommand extends Command {
     private final int taskIndex;
 
