@@ -87,7 +87,8 @@ public class MochiBot {
                     if (deadlineDate.isEmpty()) {
                         throw new MochiBotException.MissingDateException();
                     }
-                    LocalDateTime deadlineDateTime = LocalDateTime.parse(deadlineDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    LocalDateTime deadlineDateTime = LocalDateTime
+                            .parse(deadlineDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
                     addDeadline(task, deadlineDateTime);
                     break;
                 case "event":
@@ -109,7 +110,11 @@ public class MochiBot {
                     if (eventStartDate.isEmpty() || eventEndDate.isEmpty()) {
                         throw new MochiBotException.MissingDateException();
                     }
-                    addEvent(task, eventStartDate, eventEndDate);
+                    LocalDateTime eventStartDateTime = LocalDateTime
+                            .parse(eventStartDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    LocalDateTime eventEndDateTime = LocalDateTime
+                            .parse(eventEndDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    addEvent(task, eventStartDateTime, eventEndDateTime);
                     break;
                 case "delete":
                     try {
@@ -209,8 +214,8 @@ public class MochiBot {
         System.out.println("______________________________________________");
     }
 
-    public static void addEvent(String task, String startDate, String endDate) {
-        Event currEvent = new Event(task, startDate, endDate);
+    public static void addEvent(String task, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        Event currEvent = new Event(task, startDateTime, endDateTime);
         taskList.add(currEvent);
         System.out.println("______________________________________________");
         System.out.println("Got it. I've added this task:");
