@@ -1,0 +1,13 @@
+public class ExitCommand extends Command {
+
+    @Override
+    public void execute(TaskList tasks, Ui ui) {
+        ui.printExit();
+        Storage.saveTaskList(tasks);
+    }
+
+    @Override
+    public boolean hasExit() {
+        return true;
+    }
+}
