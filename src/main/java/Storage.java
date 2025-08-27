@@ -11,18 +11,18 @@ public class Storage {
     private static final String FILE_PATH = "./src/data/MochiBot.txt";
 
     /**
-     * Writes contents of taskList into a text file on the device.
+     * Writes contents of the task list into a text file on the device.
      *
-     * @param taskList {@link ArrayList} containing {@link Task} objects.
+     * @param tasks {@link TaskList} containing {@link Task} objects.
      * @throws RuntimeException If there is an error during the write operation into the text file.
      */
-    public static void saveTaskList(ArrayList<Task> taskList) {
+    public static void saveTaskList(TaskList tasks) {
         File file = new File(FILE_PATH);
         file.getParentFile().mkdirs();
 
         try (FileWriter writer = new FileWriter(file)) {
-            for (Task task : taskList) {
-                writer.write(formatSaveTask(task) + System.lineSeparator());
+            for (int i = 0; i < tasks.getSize(); i++) {
+                writer.write(formatSaveTask(tasks.getTask(i)) + System.lineSeparator());
             }
         } catch (IOException e) {
             throw new RuntimeException();
@@ -30,27 +30,27 @@ public class Storage {
     }
 
     /**
-     * Loads contents of text file containing tasks into the Task List.
+     * Loads contents of text file containing tasks into the task list.
      *
-     * @return {@link ArrayList} containing {@link Task} objects.
+     * @return {@link TaskList} containing {@link Task} objects.
      * @throws FileNotFoundException If the file cannot be found by the Scanner object
      */
-    public static ArrayList<Task> loadTaskList() throws FileNotFoundException {
-        ArrayList<Task> taskList = new ArrayList<>(100);
+    public static TaskList loadTaskList() throws FileNotFoundException {
+        TaskList tasks = new TaskList();
         File file = new File(FILE_PATH);
         if (file.exists()) {
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String taskData = reader.nextLine();
                 Task task = formatLoadTask(taskData);
-                taskList.add(task);
+                tasks.addTask(task);
             }
         }
-        return taskList;
+        return tasks;
     }
 
     /**
-     * Formats the tasks in the Task List into a format suitable for the text file.
+     * Formats the tasks in the task list into a format suitable for the text file.
      *
      * @param task {@link Task} object
      * @return String representation of the tasks suitable for the text file.
