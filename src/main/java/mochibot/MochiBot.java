@@ -1,7 +1,15 @@
+package mochibot;
+
+import mochibot.command.Command;
+import mochibot.parser.Parser;
+import mochibot.storage.Storage;
+import mochibot.task.TaskList;
+import mochibot.ui.Ui;
+
 import java.io.FileNotFoundException;
 
 public class MochiBot {
-    // public static ArrayList<Task> taskList = new ArrayList<>(100);
+    // public static ArrayList<MochiBot.Task> taskList = new ArrayList<>(100);
     private TaskList tasks;
     private final Ui ui;
 
