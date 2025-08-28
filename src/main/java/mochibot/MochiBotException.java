@@ -84,5 +84,14 @@ public class MochiBotException extends Exception {
         }
     }
 
-    // TODO: Add more exception handling for specific datetime errors
+    public static class MissingFindKeywordException extends MochiBotException {
+        private static final String errorMessage = """
+                ______________________________________________
+                Your search keyword cannot be empty ( ◡̀_◡́).
+                ______________________________________________""";
+
+        public MissingFindKeywordException() {
+            super(errorMessage);
+        }
+    }
 }
