@@ -12,10 +12,8 @@ import mochibot.command.UnmarkCommand;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ParserTest {
 
@@ -73,9 +71,7 @@ public class ParserTest {
 
     @Test
     public void parse_todoCommandWithoutTaskName_exceptionThrown() {
-        assertThrows(MochiBotException.MissingTaskNameException.class, () -> {
-            Parser.parse("todo");
-        });
+        assertThrows(MochiBotException.MissingTaskNameException.class, () -> Parser.parse("todo"));
     }
 
     @Test
