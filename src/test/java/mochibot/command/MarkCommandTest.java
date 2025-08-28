@@ -2,7 +2,6 @@ package mochibot.command;
 
 import mochibot.MochiBotException;
 
-import mochibot.task.Task;
 import mochibot.task.TaskList;
 import mochibot.task.Todo;
 
