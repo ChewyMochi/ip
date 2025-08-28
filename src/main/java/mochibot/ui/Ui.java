@@ -85,7 +85,7 @@ public class Ui {
 
     public void printNoFoundTasks(String keyword) {
         System.out.println("______________________________________________");
-        System.out.printf("No tasks were found given your keyword: %s", keyword);
+        System.out.printf("No tasks were found given your keyword: %s%n", keyword);
         System.out.println("______________________________________________");
     }
 
