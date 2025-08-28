@@ -31,16 +31,12 @@ public class ParserTest {
 
     @Test
     public void parse_markCommandWithoutIndex_exceptionThrown() {
-        assertThrows(MochiBotException.MissingTaskIndexException.class, () -> {
-            Parser.parse("mark");
-        });
+        assertThrows(MochiBotException.MissingTaskIndexException.class, () -> Parser.parse("mark"));
     }
 
     @Test
     public void parse_markCommandNonIntegerIndex_exceptionThrown() {
-        assertThrows(MochiBotException.InvalidTaskIndexException.class, () -> {
-            Parser.parse("mark abc");
-        });
+        assertThrows(MochiBotException.InvalidTaskIndexException.class, () -> Parser.parse("mark abc"));
     }
 
     @Test
@@ -51,16 +47,12 @@ public class ParserTest {
 
     @Test
     public void parse_unmarkCommandWithoutIndex_exceptionThrown() {
-        assertThrows(MochiBotException.MissingTaskIndexException.class, () -> {
-            Parser.parse("unmark");
-        });
+        assertThrows(MochiBotException.MissingTaskIndexException.class, () -> Parser.parse("unmark"));
     }
 
     @Test
     public void parse_unmarkCommandNonIntegerIndex_exceptionThrown() {
-        assertThrows(MochiBotException.InvalidTaskIndexException.class, () -> {
-            Parser.parse("unmark abc");
-        });
+        assertThrows(MochiBotException.InvalidTaskIndexException.class, () -> Parser.parse("unmark abc"));
     }
 
     @Test
@@ -100,8 +92,6 @@ public class ParserTest {
 
     @Test
     public void parse_invalidCommand_exceptionThrown() {
-        assertThrows(MochiBotException.InvalidCommandException.class, () -> {
-            Parser.parse("hello");
-        });
+        assertThrows(MochiBotException.InvalidCommandException.class, () -> Parser.parse("hello"));
     }
 }
