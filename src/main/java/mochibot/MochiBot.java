@@ -1,9 +1,13 @@
 package mochibot;
 
 import mochibot.command.Command;
+
 import mochibot.parser.Parser;
+
 import mochibot.storage.Storage;
+
 import mochibot.task.TaskList;
+
 import mochibot.ui.Ui;
 
 import java.io.FileNotFoundException;
