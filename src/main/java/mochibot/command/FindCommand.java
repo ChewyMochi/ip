@@ -5,7 +5,7 @@ import mochibot.task.TaskList;
 import mochibot.ui.Ui;
 
 public class FindCommand extends Command {
-    private String keyword;
+    private final String keyword;
 
     public FindCommand(String keyword) {
         this.keyword = keyword;
