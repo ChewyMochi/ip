@@ -27,7 +27,7 @@ public class UnmarkCommandTest {
     }
 
     @Test
-    public void execute_validTaskIndex_successMarkTask() throws MochiBotException {
+    public void execute_validTaskIndex_successUnmarkTask() throws MochiBotException {
         UnmarkCommand c = new UnmarkCommand(0);
         c.execute(tasks, ui);
         assertEquals(" ", tasks.getTask(0).getStatusIcon(), "Task was not unmarked.");
