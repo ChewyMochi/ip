@@ -1,7 +1,9 @@
 package mochibot.command;
 
 import mochibot.MochiBotException;
+
 import mochibot.task.TaskList;
+
 import mochibot.ui.Ui;
 
 public abstract class Command {
