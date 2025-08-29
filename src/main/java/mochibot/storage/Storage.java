@@ -17,6 +17,10 @@ import java.io.FileWriter;
 
 import java.util.Scanner;
 
+/**
+ * This class contains the methods to handle the saving and loading
+ * of tasks in the task list into and from the local text file.
+ */
 public class Storage {
     private static final String FILE_PATH = "./src/data/MochiBot.txt";
 
@@ -42,7 +46,7 @@ public class Storage {
     /**
      * Loads contents of text file containing tasks into the task list.
      *
-     * @return {@link TaskList} containing {@link Task} objects.
+     * @return {@code TaskList} containing {@code Task} objects.
      * @throws FileNotFoundException If the file cannot be found by the Scanner object
      */
     public static TaskList loadTaskList() throws FileNotFoundException {
@@ -62,7 +66,7 @@ public class Storage {
     /**
      * Formats the tasks in the task list into a format suitable for the text file.
      *
-     * @param task {@link Task} object
+     * @param task {@code Task} object
      * @return String representation of the tasks suitable for the text file.
      */
     private static String formatSaveTask(Task task) {
@@ -89,7 +93,7 @@ public class Storage {
      * Converts string representation of tasks in the text file into MochiBot.Task objects
      *
      * @param taskData String representation of a single task from the text file.
-     * @return {@link Task} object
+     * @return {@code Task} object
      */
     private static Task formatLoadTask(String taskData) {
         String[] taskParams = taskData.split(" \\| ");

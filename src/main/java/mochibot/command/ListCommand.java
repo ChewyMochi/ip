@@ -4,8 +4,19 @@ import mochibot.task.TaskList;
 
 import mochibot.ui.Ui;
 
+/**
+ *     This class represents a List command, providing the method {@code execute}
+ *     to print all the tasks in the task list.
+ */
 public class ListCommand extends Command {
 
+    /**
+     * Executes the {@code ListCommand} object to print all the tasks in the task list,
+     * or print an empty task list message if the task list is empty.
+     *
+     * @param tasks {@link TaskList} object to stores all tasks.
+     * @param ui {@link Ui} object to print displays.
+     */
     @Override
     public void execute(TaskList tasks, Ui ui) {
         if (tasks.isEmpty()) {

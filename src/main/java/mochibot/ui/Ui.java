@@ -5,6 +5,10 @@ import mochibot.task.TaskList;
 
 import java.util.Scanner;
 
+/**
+ * This class contains a list of methods to print out display messages
+ * corresponding to the command given by the user.
+ */
 public class Ui {
     private final Scanner scanner;
 
