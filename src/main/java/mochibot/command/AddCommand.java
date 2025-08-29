@@ -7,6 +7,10 @@ import mochibot.task.TaskList;
 
 import mochibot.ui.Ui;
 
+/**
+ * This class represents an Add command, providing the method to add tasks
+ * into the task list.
+ */
 public class AddCommand extends Command {
     private final Task task;
 
@@ -14,6 +18,14 @@ public class AddCommand extends Command {
         this.task = task;
     }
 
+    /**
+     * Executes the {@link AddCommand} object to add tasks to the task list,
+     * saves the task list to local text file and prints display message
+     * indicating task being added.
+     *
+     * @param tasks Task list of added tasks.
+     * @param ui Ui object to print display.
+     */
     @Override
     public void execute(TaskList tasks, Ui ui) {
         tasks.addTask(this.task);
