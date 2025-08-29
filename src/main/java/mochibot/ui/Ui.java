@@ -78,6 +78,21 @@ public class Ui {
         System.out.println("______________________________________________");
     }
 
+    public void printFoundTasks(TaskList tasks) {
+        System.out.println("______________________________________________");
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < tasks.getSize(); i++) {
+            System.out.println(i + 1 + ". " + tasks.getTask(i));
+        }
+        System.out.println("______________________________________________");
+    }
+
+    public void printNoFoundTasks(String keyword) {
+        System.out.println("______________________________________________");
+        System.out.printf("No tasks were found given your keyword: %s%n", keyword);
+        System.out.println("______________________________________________");
+    }
+
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }

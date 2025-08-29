@@ -9,6 +9,7 @@ import mochibot.command.AddCommand;
 import mochibot.command.Command;
 import mochibot.command.DeleteCommand;
 import mochibot.command.ExitCommand;
+import mochibot.command.FindCommand;
 import mochibot.command.ListCommand;
 import mochibot.command.MarkCommand;
 import mochibot.command.UnmarkCommand;
@@ -95,6 +96,12 @@ public class Parser {
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new MochiBotException.MissingTaskIndexException();
             }
+        case "find":
+            String keyword = joinArray(inputs, 1, inputs.length);
+            if (keyword.isEmpty()) {
+                throw new MochiBotException.MissingFindKeywordException();
+            }
+            return new FindCommand(keyword);
         case "bye":
             return new ExitCommand();
         default:
