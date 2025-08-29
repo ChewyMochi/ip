@@ -20,11 +20,11 @@ public class AddCommand extends Command {
 
     /**
      * Executes the {@link AddCommand} object to add tasks to the task list,
-     * saves the task list to local text file and prints display message
+     * saves the task list to local text file and displays message
      * indicating task being added.
      *
-     * @param tasks Task list of added tasks.
-     * @param ui Ui object to print display.
+     * @param tasks {@link TaskList} object storing a list of added tasks.
+     * @param ui {@link Ui} object to print displays.
      */
     @Override
     public void execute(TaskList tasks, Ui ui) {
