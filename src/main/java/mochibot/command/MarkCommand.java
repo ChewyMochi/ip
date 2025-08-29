@@ -1,12 +1,9 @@
 package mochibot.command;
 
 import mochibot.MochiBotException;
-
 import mochibot.storage.Storage;
-
 import mochibot.task.Task;
 import mochibot.task.TaskList;
-
 import mochibot.ui.Ui;
 
 public class MarkCommand extends Command {

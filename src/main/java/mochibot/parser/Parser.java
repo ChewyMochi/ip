@@ -1,7 +1,10 @@
 package mochibot.parser;
 
-import mochibot.MochiBotException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
+import mochibot.MochiBotException;
 import mochibot.command.AddCommand;
 import mochibot.command.Command;
 import mochibot.command.DeleteCommand;
@@ -9,15 +12,9 @@ import mochibot.command.ExitCommand;
 import mochibot.command.ListCommand;
 import mochibot.command.MarkCommand;
 import mochibot.command.UnmarkCommand;
-
 import mochibot.task.Deadline;
 import mochibot.task.Event;
 import mochibot.task.Todo;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import java.util.Arrays;
 
 public class Parser {
 

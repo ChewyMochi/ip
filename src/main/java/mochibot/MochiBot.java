@@ -1,16 +1,12 @@
 package mochibot;
 
-import mochibot.command.Command;
-
-import mochibot.parser.Parser;
-
-import mochibot.storage.Storage;
-
-import mochibot.task.TaskList;
-
-import mochibot.ui.Ui;
-
 import java.io.FileNotFoundException;
+
+import mochibot.command.Command;
+import mochibot.parser.Parser;
+import mochibot.storage.Storage;
+import mochibot.task.TaskList;
+import mochibot.ui.Ui;
 
 public class MochiBot {
     // public static ArrayList<MochiBot.Task> taskList = new ArrayList<>(100);
