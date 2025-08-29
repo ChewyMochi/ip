@@ -17,6 +17,10 @@ import java.io.FileWriter;
 
 import java.util.Scanner;
 
+/**
+ * This class contains the methods to handle the saving and loading
+ * of tasks in the task list into and from the local text file.
+ */
 public class Storage {
     private static final String FILE_PATH = "./src/data/MochiBot.txt";
 
