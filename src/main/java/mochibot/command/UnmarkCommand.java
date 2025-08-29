@@ -11,7 +11,7 @@ import mochibot.ui.Ui;
 
 /**
  * <p>
- *     This class represents a Unmark command, providing the method {@code execute}
+ *     This class represents an Unmark command, providing the method {@code execute}
  *     to unmark a task in the task list.
  * </p>
  * <p>
