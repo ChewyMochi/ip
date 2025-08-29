@@ -1,9 +1,9 @@
 package mochibot.ui;
 
+import java.util.Scanner;
+
 import mochibot.task.Task;
 import mochibot.task.TaskList;
-
-import java.util.Scanner;
 
 /**
  * This class contains a list of methods to print out display messages

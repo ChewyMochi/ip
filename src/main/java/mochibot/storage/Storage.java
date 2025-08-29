@@ -1,21 +1,18 @@
 package mochibot.storage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
 import mochibot.task.Deadline;
 import mochibot.task.Event;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
 import mochibot.task.Todo;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import java.io.File;
-import java.io.FileWriter;
-
-import java.util.Scanner;
 
 /**
  * This class contains the methods to handle the saving and loading
