@@ -4,6 +4,7 @@ import mochibot.MochiBotException;
 import mochibot.storage.Storage;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
+import mochibot.ui.Gui;
 import mochibot.ui.Ui;
 
 /**
@@ -40,5 +41,16 @@ public class MarkCommand extends Command {
         task.markDone();
         ui.printMarkTask(task);
         Storage.saveTaskList(tasks);
+    }
+
+    @Override
+    public String execute(TaskList tasks, Gui gui) throws MochiBotException {
+        if (this.taskIndex >= tasks.getSize()) {
+            throw new MochiBotException.InvalidTaskIndexException();
+        }
+        Task task = tasks.getTask(this.taskIndex);
+        task.markDone();
+        Storage.saveTaskList(tasks);
+        return gui.displayMarkTask(task);
     }
 }

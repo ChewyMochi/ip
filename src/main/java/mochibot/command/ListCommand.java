@@ -1,6 +1,7 @@
 package mochibot.command;
 
 import mochibot.task.TaskList;
+import mochibot.ui.Gui;
 import mochibot.ui.Ui;
 
 /**
@@ -22,6 +23,15 @@ public class ListCommand extends Command {
             ui.printEmptyList();
         } else {
             ui.printList(tasks);
+        }
+    }
+
+    @Override
+    public String execute(TaskList tasks, Gui gui) {
+        if (tasks.isEmpty()) {
+            return gui.displayEmptyList();
+        } else {
+            return gui.displayList(tasks);
         }
     }
 }

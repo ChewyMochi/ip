@@ -2,6 +2,7 @@ package mochibot.command;
 
 import mochibot.storage.Storage;
 import mochibot.task.TaskList;
+import mochibot.ui.Gui;
 import mochibot.ui.Ui;
 
 /**
@@ -14,6 +15,12 @@ public class ExitCommand extends Command {
     public void execute(TaskList tasks, Ui ui) {
         ui.printExit();
         Storage.saveTaskList(tasks);
+    }
+
+    @Override
+    public String execute(TaskList tasks, Gui gui) {
+        Storage.saveTaskList(tasks);
+        return gui.displayExit();
     }
 
     @Override
