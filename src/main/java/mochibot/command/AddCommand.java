@@ -3,6 +3,7 @@ package mochibot.command;
 import mochibot.storage.Storage;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
+import mochibot.ui.Gui;
 import mochibot.ui.Ui;
 
 /**
@@ -34,5 +35,12 @@ public class AddCommand extends Command {
         tasks.addTask(this.task);
         ui.printAddTask(this.task, tasks);
         Storage.saveTaskList(tasks);
+    }
+
+    @Override
+    public String execute(TaskList tasks, Gui gui) {
+        tasks.addTask(this.task);
+        Storage.saveTaskList(tasks);
+        return gui.displayAddTask(this.task, tasks);
     }
 }
