@@ -44,6 +44,7 @@ public class DeleteCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Gui gui) throws MochiBotException {
+        assert taskIndex >= 0 : "taskIndex cannot be negative";
         if (this.taskIndex >= tasks.getSize()) {
             throw new MochiBotException.InvalidTaskIndexException();
         }

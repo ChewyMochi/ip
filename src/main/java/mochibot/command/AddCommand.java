@@ -39,6 +39,7 @@ public class AddCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Gui gui) {
+        assert tasks != null : "task cannot be null";
         tasks.addTask(this.task);
         Storage.saveTaskList(tasks);
         return gui.displayAddTask(this.task, tasks);

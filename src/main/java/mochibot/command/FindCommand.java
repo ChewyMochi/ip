@@ -4,6 +4,10 @@ import mochibot.task.TaskList;
 import mochibot.ui.Gui;
 import mochibot.ui.Ui;
 
+/**
+ * This class represents a Find command, providing the method {@code execute}
+ * to find tasks that match the specified keyword and print them.
+ */
 public class FindCommand extends Command {
     private final String keyword;
 
