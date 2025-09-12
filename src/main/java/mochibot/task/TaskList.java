@@ -2,6 +2,12 @@ package mochibot.task;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents an {@code ArrayList} of {@code Task} objects.
+ * <p>
+ *     The {@code TaskList} class provides methods to manipulate and retrieve tasks in the list.
+ * </p>
+ */
 public class TaskList {
     private final ArrayList<Task> tasks;
 
