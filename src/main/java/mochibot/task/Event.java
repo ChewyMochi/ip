@@ -1,7 +1,8 @@
 package mochibot.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import mochibot.util.DateTimeParser;
 
 /**
  *  This class represents an {@code Event} task with a specified start and end datetime.
@@ -56,8 +57,8 @@ public class Event extends Task {
     @Override
     public String toString() {
         return this.getType() + super.toString() + " from "
-                + this.eventStart.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy HH:mm"))
+                + DateTimeParser.formatDateTimeDisplay(this.eventStart)
                 + " to "
-                + this.eventEnd.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy HH:mm"));
+                + DateTimeParser.formatDateTimeDisplay(this.eventEnd);
     }
 }

@@ -1,7 +1,8 @@
 package mochibot.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import mochibot.util.DateTimeParser;
 
 /**
  * This class represents a {@code Deadline} task with a specified datetime.
@@ -46,6 +47,6 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return this.getType() + super.toString() + " "
-                + this.deadlineDate.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy HH:mm"));
+                + DateTimeParser.formatDateTimeDisplay(this.deadlineDate);
     }
 }

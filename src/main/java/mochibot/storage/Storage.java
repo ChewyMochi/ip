@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import mochibot.task.Deadline;
@@ -13,6 +12,7 @@ import mochibot.task.Event;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
 import mochibot.task.Todo;
+import mochibot.util.DateTimeParser;
 
 /**
  * This class contains the methods to handle the saving and loading
@@ -73,14 +73,14 @@ public class Storage {
         case "[D]" -> {
             Deadline deadline = (Deadline) task;
             yield String.format("D | %B | %s | ", task.isDone(), task.getDescription())
-                        + deadline.getDeadlineDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                        + DateTimeParser.formatDateTimeStorage(deadline.getDeadlineDate());
         }
         case "[E]" -> {
             Event event = (Event) task;
             yield String.format("E | %B | %s | ", task.isDone(), task.getDescription())
-                        + event.getEventStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+                        + DateTimeParser.formatDateTimeStorage(event.getEventStart())
                         + " | "
-                        + event.getEventEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                        + DateTimeParser.formatDateTimeStorage(event.getEventEnd());
         }
         default -> "";
         };
@@ -103,16 +103,13 @@ public class Storage {
             return new Todo(taskDescription, isDone);
         case "D":
             String deadlineDate = taskParams[3];
-            LocalDateTime deadlineDateTime = LocalDateTime
-                    .parse(deadlineDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            LocalDateTime deadlineDateTime = DateTimeParser.parseInput(deadlineDate);
             return new Deadline(taskDescription, isDone, deadlineDateTime);
         case "E":
             String eventStart = taskParams[3];
             String eventEnd = taskParams [4];
-            LocalDateTime eventStartDateTime = LocalDateTime
-                    .parse(eventStart, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            LocalDateTime eventEndDateTime = LocalDateTime
-                    .parse(eventEnd, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
+            LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
             return new Event(taskDescription, isDone, eventStartDateTime, eventEndDateTime);
         default:
             throw new IllegalStateException("Unexpected task received: " + taskData);

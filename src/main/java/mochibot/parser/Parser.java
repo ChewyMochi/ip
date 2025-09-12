@@ -1,7 +1,6 @@
 package mochibot.parser;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import mochibot.MochiBotException;
@@ -16,6 +15,7 @@ import mochibot.command.UnmarkCommand;
 import mochibot.task.Deadline;
 import mochibot.task.Event;
 import mochibot.task.Todo;
+import mochibot.util.DateTimeParser;
 
 public class Parser {
 
@@ -62,8 +62,7 @@ public class Parser {
             if (deadlineDate.isEmpty()) {
                 throw new MochiBotException.MissingDateException();
             }
-            LocalDateTime deadlineDateTime = LocalDateTime
-                    .parse(deadlineDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            LocalDateTime deadlineDateTime = DateTimeParser.parseInput(deadlineDate);
             Deadline deadline = new Deadline(taskName, deadlineDateTime);
             return new AddCommand(deadline);
         case "event":
@@ -81,10 +80,8 @@ public class Parser {
             if (eventStart.isEmpty() || eventEnd.isEmpty()) {
                 throw new MochiBotException.MissingDateException();
             }
-            LocalDateTime eventStartDateTime = LocalDateTime
-                    .parse(eventStart, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            LocalDateTime eventEndDateTime = LocalDateTime
-                    .parse(eventEnd, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
+            LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
             Event event = new Event(taskName, eventStartDateTime, eventEndDateTime);
             return new AddCommand(event);
         case "delete":
