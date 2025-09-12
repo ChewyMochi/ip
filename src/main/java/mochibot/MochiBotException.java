@@ -86,4 +86,14 @@ public class MochiBotException extends Exception {
             super(errorMessage);
         }
     }
+
+    public static class DuplicateTaskException extends MochiBotException {
+        private static final String errorMessage = """
+                You entered a duplicate task ^(-o-)^.
+                """;
+
+        public DuplicateTaskException() {
+            super(errorMessage);
+        }
+    }
 }
