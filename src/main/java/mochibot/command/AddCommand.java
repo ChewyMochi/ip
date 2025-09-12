@@ -1,5 +1,6 @@
 package mochibot.command;
 
+import mochibot.MochiBotException;
 import mochibot.storage.Storage;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
@@ -30,10 +31,22 @@ public class AddCommand extends Command {
      * @param gui {@link Gui} object to print displays.
      */
     @Override
-    public String execute(TaskList tasks, Gui gui) {
+    public String execute(TaskList tasks, Gui gui) throws MochiBotException {
         assert tasks != null : "task cannot be null";
+        if (isDuplicate(tasks, this.task)) {
+            throw new MochiBotException.DuplicateTaskException();
+        }
         tasks.addTask(this.task);
         Storage.saveTaskList(tasks);
         return gui.displayAddTask(this.task, tasks);
+    }
+
+    private static boolean isDuplicate(TaskList tasks, Task task) {
+        for (int i = 0; i < tasks.getSize(); i++) {
+            if (tasks.getTask(i).getDescription().equals(task.getDescription())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
