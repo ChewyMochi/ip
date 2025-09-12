@@ -4,7 +4,6 @@ import mochibot.storage.Storage;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
 import mochibot.ui.Gui;
-import mochibot.ui.Ui;
 
 /**
  * <p>
@@ -28,15 +27,8 @@ public class AddCommand extends Command {
      * indicating task being added.
      *
      * @param tasks {@link TaskList} object that stores all tasks.
-     * @param ui {@link Ui} object to print displays.
+     * @param gui {@link Gui} object to print displays.
      */
-    @Override
-    public void execute(TaskList tasks, Ui ui) {
-        tasks.addTask(this.task);
-        ui.printAddTask(this.task, tasks);
-        Storage.saveTaskList(tasks);
-    }
-
     @Override
     public String execute(TaskList tasks, Gui gui) {
         assert tasks != null : "task cannot be null";

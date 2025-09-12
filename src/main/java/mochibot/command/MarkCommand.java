@@ -5,7 +5,6 @@ import mochibot.storage.Storage;
 import mochibot.task.Task;
 import mochibot.task.TaskList;
 import mochibot.ui.Gui;
-import mochibot.ui.Ui;
 
 /**
  * <p>
@@ -29,20 +28,9 @@ public class MarkCommand extends Command {
      * task being marked.
      *
      * @param tasks {@link TaskList} object to stores all tasks.
-     * @param ui {@link Ui} object to print displays.
+     * @param gui {@link Gui} object to print displays.
      * @throws MochiBotException If taskIndex >= size of task list.
      */
-    @Override
-    public void execute(TaskList tasks, Ui ui) throws MochiBotException {
-        if (this.taskIndex >= tasks.getSize()) {
-            throw new MochiBotException.InvalidTaskIndexException();
-        }
-        Task task = tasks.getTask(this.taskIndex);
-        task.markDone();
-        ui.printMarkTask(task);
-        Storage.saveTaskList(tasks);
-    }
-
     @Override
     public String execute(TaskList tasks, Gui gui) throws MochiBotException {
         assert taskIndex >= 0 : "taskIndex cannot be negative";
