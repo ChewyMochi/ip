@@ -8,10 +8,20 @@ import mochibot.storage.Storage;
 import mochibot.task.TaskList;
 import mochibot.ui.Gui;
 
+/**
+ * This class represents the entry point of the MochiBot chatbot application.
+ * <p>
+ *     The {@code MochiBot} class initializes the GUI and loads any existing tasks into the tasklist.
+ *     It also handles all user interactions with the application.
+ * </p>
+ */
 public class MochiBot {
     private TaskList tasks;
     private final Gui gui;
 
+    /**
+     * Creates a new MochiBot instance and loads existing tasks into the tasklist.
+     */
     public MochiBot() {
         gui = new Gui();
         try {
