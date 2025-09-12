@@ -20,8 +20,7 @@ import mochibot.util.DateTimeParser;
 public class Parser {
 
     public static Command parse(String fullCommand) throws MochiBotException {
-        fullCommand = fullCommand.trim();
-        String[] inputs = fullCommand.split(" ");
+        String[] inputs = fullCommand.trim().split(" ");
         String command = inputs[0];
         String taskName;
         int taskIndex;
