@@ -7,16 +7,22 @@ import mochibot.parser.Parser;
 import mochibot.storage.Storage;
 import mochibot.task.TaskList;
 import mochibot.ui.Gui;
-import mochibot.ui.Ui;
 
+/**
+ * This class represents the entry point of the MochiBot chatbot application.
+ * <p>
+ *     The {@code MochiBot} class initializes the GUI and loads any existing tasks into the tasklist.
+ *     It also handles all user interactions with the application.
+ * </p>
+ */
 public class MochiBot {
-    // public static ArrayList<MochiBot.Task> taskList = new ArrayList<>(100);
     private TaskList tasks;
-    private final Ui ui;
     private final Gui gui;
 
+    /**
+     * Creates a new MochiBot instance and loads existing tasks into the tasklist.
+     */
     public MochiBot() {
-        ui = new Ui();
         gui = new Gui();
         try {
             tasks = Storage.loadTaskList();
@@ -24,25 +30,6 @@ public class MochiBot {
             System.out.println("Scanner cannot find file to read.");
             tasks = new TaskList();
         }
-    }
-
-    public void run() {
-        ui.printGreeting();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui);
-                isExit = c.hasExit();
-            } catch (MochiBotException e) {
-                ui.printErrorMessage(e.getMessage());
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        new MochiBot().run();
     }
 
     public String displayGreeting() {
