@@ -9,12 +9,14 @@ public class Event extends Task {
 
     public Event(String description, LocalDateTime eventStart, LocalDateTime eventEnd) {
         super(description);
+        assert eventStart != null && eventEnd != null : "eventStart must not be null";
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
     }
 
     public Event(String description, boolean isDone, LocalDateTime eventStart, LocalDateTime eventEnd) {
         super(description, isDone);
+        assert eventStart != null && eventEnd != null : "eventStart must not be null";
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
     }
