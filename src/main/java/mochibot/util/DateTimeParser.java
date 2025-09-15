@@ -2,6 +2,7 @@ package mochibot.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * The {@code DateTimeParser} class is responsible for handling the
@@ -20,6 +21,23 @@ public class DateTimeParser {
      */
     public static LocalDateTime parseInput(String input) {
         return LocalDateTime.parse(input, defaultFormat);
+    }
+
+    /**
+     * Parses a date-time string from stored task data into a {@link LocalDateTime} object
+     * using the default format {@code yyyy-MM-dd HH:mm}.
+     * <p>
+     * This method is typically used when loading tasks from persistent storage, such as
+     * text files, where date-time values were previously saved in the default format.
+     * </p>
+     *
+     * @param taskDateTime the date-time string to parse, e.g. "2025-09-15 14:30"
+     * @return a {@link LocalDateTime} object representing the parsed date and time
+     * @throws java.time.format.DateTimeParseException if the input string does not match
+     *         the expected format
+     */
+    public static LocalDateTime parseLoadTask(String taskDateTime) {
+        return LocalDateTime.parse(taskDateTime, defaultFormat);
     }
 
     /**
