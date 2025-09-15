@@ -9,8 +9,18 @@ import mochibot.command.Command;
 import mochibot.task.Event;
 import mochibot.util.DateTimeParser;
 
+/**
+ * This class is responsible for handling the "event" command input.
+ */
 public class EventParser {
 
+    /**
+     * Parses the "event" command input and returns a corresponding {@code AddCommand}.
+     *
+     * @param inputs the array of command arguments entered by the user
+     * @return an {@code AddCommand} that contains a {@code Event} task
+     * @throws MochiBotException
+     */
     public static Command parse(String[] inputs) throws MochiBotException {
         int dateFromIndex = getStringIndex(inputs, "/from");
         int dateToIndex = getStringIndex(inputs, "/to");

@@ -9,8 +9,20 @@ import mochibot.command.Command;
 import mochibot.task.Deadline;
 import mochibot.util.DateTimeParser;
 
+/**
+ * This class is responsible for handling the "deadline" command input.
+ */
 public class DeadlineParser {
 
+    /**
+     * Parses the "deadline" command input and returns a corresponding {@code AddCommand}.
+     *
+     * @param inputs the array of command arguments entered by the user
+     * @return an {@code AddCommand} that contains a {@code Deadline} task
+     * @throws MochiBotException.MissingEventArgumentsException if "/from" or "/to" keywords are missing
+     * @throws MochiBotException.MissingTaskNameException if the task name is empty
+     * @throws MochiBotException.MissingDateException if the start or end date/time is empty
+     */
     public static Command parse(String[] inputs) throws MochiBotException {
         int dateByIndex = getByIndex(inputs);
         if (dateByIndex == -1) {
