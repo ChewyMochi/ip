@@ -108,16 +108,3 @@ MochiBot data are saved in the hard disk automatically after any command that ch
 ## FAQ
 **Q:** How do I transfer my data to another Computer? <br>
 **A:** Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
-
-## Command summary
-| Action       | Format, Examples                                     |
-|--------------|------------------------------------------------------|
-| Add Todo     | `todo [DESCRIPTION]`                                 |
-| Add Deadline | `deadline [DESCRIPTION] [/by DATETIME]`              |
-| Add Event    | `event [DESCRIPTION [/from DATETIME] [/to DATETIME]` |
-| Mark         | `mark [TASK INDEX]` <br> e.g. `mark 1`               |
-| Unmark       | `unmark [TASK INDEX]` <br> e.g. `unmark 2`           |
-| Find         | `find [KEYWORD]` <br> e.g. `find bread`              |
-| Delete       | `delete [TASK INDEX]` <br> e.g. `delete 1`           |
-| List         | `list`                                               |
-| Exit         | `bye`                                                |
