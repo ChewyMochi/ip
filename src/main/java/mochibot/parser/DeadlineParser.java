@@ -13,7 +13,7 @@ import mochibot.util.DateTimeParser;
 public class DeadlineParser {
 
     public static Command parse(String[] inputs) throws MochiBotException {
-        int dateByIndex = getStringIndex(inputs, "/by");
+        int dateByIndex = getByIndex(inputs);
         if (dateByIndex == -1) {
             throw new MochiBotException.MissingDeadlineArgumentsException();
         }
@@ -35,12 +35,11 @@ public class DeadlineParser {
      * and returns its index.
      *
      * @param strArray the array to search
-     * @param item     the string to find
      * @return the index of the first occurrence of {@code item}, or -1 if not found
      */
-    private static int getStringIndex(String[] strArray, String item) {
+    private static int getByIndex(String[] strArray) {
         for (int i = 0; i < strArray.length; i++) {
-            if (strArray[i].equals(item)) {
+            if (strArray[i].equals("/by")) {
                 return i;
             }
         }
