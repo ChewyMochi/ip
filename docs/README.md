@@ -35,7 +35,6 @@ Examples:
 - `todo study`
 
 <br>
-    
 
 #### Adding a `deadline` task:
 Format: `deadline [DESCRIPTION] [/by DATETIME]` <br>
@@ -69,8 +68,6 @@ Format: `mark [TASK INDEX]`
 - Marks the task at the specified `TASK INDEX`.
 - The index refers to the index number shown in the displayed task list.
 - The index number **must be a positive integer** 1, 2, 3, ...
-
-<br>
 
 Examples:
 - `list` followed by `mark 2` marks the 2nd task in the task list.
