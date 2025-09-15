@@ -6,6 +6,16 @@ MochiBot is a **desktop app for managing tasks, optimized for use via a Command 
 
 ## Table of Contents
 - [Quick Start](#quick-start)
+- [Features](#features)
+  - [Adding a task: `todo`,`deadline`, `event`](#adding-a-task-todo-deadline-event)
+  - [Listing all tasks: `list`](#listing-all-tasks-list)
+  - [Marking a task: `mark`](#marking-a-task-mark)
+  - [Unmarking a task: `unmark`](#unmarking-a-task-unmark)
+  - [Locating a task by name: `find`](#locating-a-task-by-name-find)
+  - [Deleting a task: `delete`](#deleting-a-task-delete)
+  - [Exiting the program: `bye`](#exiting-the-program-bye)
+- [Saving the data](#saving-the-data)
+- [FAQ](#faq)
 
 ## Quick start
 1. Ensure that you have Java `17` or above installed in your Computer. <br>
