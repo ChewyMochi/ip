@@ -19,7 +19,7 @@ public class DeadlineParser {
      *
      * @param inputs the array of command arguments entered by the user
      * @return an {@code AddCommand} that contains a {@code Deadline} task
-     * @throws MochiBotException.MissingEventArgumentsException if "/from" or "/to" keywords are missing
+     * @throws MochiBotException.MissingEventArgumentsException if "/by" keyword is missing
      * @throws MochiBotException.MissingTaskNameException if the task name is empty
      * @throws MochiBotException.MissingDateException if the start or end date/time is empty
      */
