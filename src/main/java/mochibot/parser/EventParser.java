@@ -27,14 +27,10 @@ public class EventParser {
         if (eventStart.isEmpty() || eventEnd.isEmpty()) {
             throw new MochiBotException.MissingDateException();
         }
-        try {
-            LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
-            LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
-            Event event = new Event(taskName, eventStartDateTime, eventEndDateTime);
-            return new AddCommand(event);
-        } catch (DateTimeParseException e) {
-            throw new MochiBotException.InvalidDateTimeFormat();
-        }
+        LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
+        LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
+        Event event = new Event(taskName, eventStartDateTime, eventEndDateTime);
+        return new AddCommand(event);
     }
 
     /**

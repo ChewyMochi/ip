@@ -25,13 +25,9 @@ public class DeadlineParser {
         if (deadlineDate.isEmpty()) {
             throw new MochiBotException.MissingDateException();
         }
-        try {
-            LocalDateTime deadlineDateTime = DateTimeParser.parseInput(deadlineDate);
-            Deadline deadline = new Deadline(taskName, deadlineDateTime);
-            return new AddCommand(deadline);
-        } catch (DateTimeParseException e) {
-            throw new MochiBotException.InvalidDateTimeFormat();
-        }
+        LocalDateTime deadlineDateTime = DateTimeParser.parseInput(deadlineDate);
+        Deadline deadline = new Deadline(taskName, deadlineDateTime);
+        return new AddCommand(deadline);
     }
 
     /**
