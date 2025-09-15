@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import mochibot.MochiBotException;
+
 /**
  * The {@code DateTimeParser} class is responsible for handling the
  * format patterns for {@code LocalDateTime} objects.
@@ -19,8 +21,12 @@ public class DateTimeParser {
      * @param input the date and time in string
      * @return a {@code LocalDateTime} object in the format of yyyy-MM-dd HH:mm
      */
-    public static LocalDateTime parseInput(String input) {
-        return LocalDateTime.parse(input, defaultFormat);
+    public static LocalDateTime parseInput(String input) throws MochiBotException {
+        try {
+            return LocalDateTime.parse(input, defaultFormat);
+        } catch (DateTimeParseException e) {
+            throw new MochiBotException.InvalidDateTimeException();
+        }
     }
 
     /**
