@@ -17,6 +17,22 @@ import mochibot.command.Command;
 public class Parser {
 
     /**
+     * The {@code CommandType} enumeration represents all the commands
+     * that a user can call in the application.
+     */
+    public enum CommandType {
+        LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, FIND, BYE
+    }
+
+    private static CommandType parseCommand(String command) throws MochiBotException {
+        try {
+            return CommandType.valueOf(command.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new MochiBotException.InvalidCommandException();
+        }
+    }
+
+    /**
      * Parses the full command input from the user and returns the corresponding
      * {@link Command} object to be executed.
      *
