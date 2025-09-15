@@ -33,13 +33,11 @@ public class Parser {
     }
 
     /**
-     * Parses the full command input from the user and returns the corresponding
-     * {@link Command} object to be executed.
+     * Parses a full user input command string and returns the corresponding {@link Command}.
      *
-     * @param fullCommand the raw user input string
-     * @return a {@link Command} object representing the user's request
-     * @throws MochiBotException if the command is invalid, missing required arguments,
-     *     or contains malformed input such as a non-numeric index.
+     * @param fullCommand the complete command string entered by the user
+     * @return the corresponding {@link Command} object
+     * @throws MochiBotException if parsing fails for the given command or its arguments
      */
     public static Command parse(String fullCommand) throws MochiBotException {
         String[] inputs = fullCommand.trim().split(" ");
