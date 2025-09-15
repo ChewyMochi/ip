@@ -103,13 +103,13 @@ public class Storage {
             return new Todo(taskDescription, isDone);
         case "D":
             String deadlineDate = taskParams[3];
-            LocalDateTime deadlineDateTime = DateTimeParser.parseInput(deadlineDate);
+            LocalDateTime deadlineDateTime = DateTimeParser.parseLoadTask(deadlineDate);
             return new Deadline(taskDescription, isDone, deadlineDateTime);
         case "E":
             String eventStart = taskParams[3];
             String eventEnd = taskParams [4];
-            LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
-            LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
+            LocalDateTime eventStartDateTime = DateTimeParser.parseLoadTask(eventStart);
+            LocalDateTime eventEndDateTime = DateTimeParser.parseLoadTask(eventEnd);
             return new Event(taskDescription, isDone, eventStartDateTime, eventEndDateTime);
         default:
             throw new IllegalStateException("Unexpected task received: " + taskData);
