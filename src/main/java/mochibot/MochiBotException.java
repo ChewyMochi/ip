@@ -136,4 +136,17 @@ public class MochiBotException extends Exception {
             super(errorMessage);
         }
     }
+
+    /**
+     * Exception thrown when the user inputs an invalid date or time
+     */
+    public static class InvalidDateTimeException extends MochiBotException {
+        private static final String errorMessage = """
+                You entered an invalid date-time ( ◡̀_◡́).
+                """;
+
+        public InvalidDateTimeException() {
+            super(errorMessage);
+        }
+    }
 }
