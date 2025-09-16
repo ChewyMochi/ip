@@ -73,7 +73,7 @@ public class MochiBotException extends Exception {
     public static class MissingDeadlineArgumentsException extends MochiBotException {
         private static final String errorMessage = """
                 Incorrect format detected (ꐦㅍ_ㅍ). Format is:
-                deadline <name> /by <date-time>
+                deadline [DESCRIPTION] /by [YYYY:MM:DD HH:mm]
                 """;
 
         public MissingDeadlineArgumentsException() {
@@ -88,7 +88,7 @@ public class MochiBotException extends Exception {
     public static class MissingEventArgumentsException extends MochiBotException {
         private static final String errorMessage = """
                 Incorrect format detected (ꐦㅍ_ㅍ). Format is:
-                event <name> /from <date-time> /to <date-time>
+                event [DESCRIPTION] /from [YYYY:MM:DD HH:mm] /to [YYYY:MM:DD HH:mm]
                 """;
 
         public MissingEventArgumentsException() {
