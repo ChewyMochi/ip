@@ -138,7 +138,7 @@ public class MochiBotException extends Exception {
     }
 
     /**
-     * Exception thrown when the user inputs an invalid date or time
+     * Exception thrown when the user inputs an invalid date or time.
      */
     public static class InvalidDateTimeException extends MochiBotException {
         private static final String errorMessage = """
@@ -147,6 +147,32 @@ public class MochiBotException extends Exception {
                 """;
 
         public InvalidDateTimeException() {
+            super(errorMessage);
+        }
+    }
+
+    /**
+     * Exception thrown when the user attempts to mark an already marked task.
+     */
+    public static class DuplicateMarkTaskException extends MochiBotException {
+        private static final String errorMessage = """
+                Task has already been marked. ^(-o-)^.
+                """;
+
+        public DuplicateMarkTaskException() {
+            super(errorMessage);
+        }
+    }
+
+    /**
+     * Exception thrown when the user attempts to unmark an already unmarked task.
+     */
+    public static class DuplicateUnmarkTaskException extends MochiBotException {
+        private static final String errorMessage = """
+                Task has already been unmarked. ^(-o-)^.
+                """;
+
+        public DuplicateUnmarkTaskException() {
             super(errorMessage);
         }
     }
