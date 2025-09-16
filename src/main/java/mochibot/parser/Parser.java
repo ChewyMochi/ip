@@ -40,11 +40,11 @@ public class Parser {
      * @throws MochiBotException if parsing fails for the given command or its arguments
      */
     public static Command parse(String fullCommand) throws MochiBotException {
-        String[] inputs = fullCommand.trim().split(" ");
+        String[] inputs = fullCommand.trim().replaceAll("\\s+", " ").split(" ");
         CommandType command = parseCommand(inputs[0]);
 
         return switch (command) {
-        case LIST -> ListParser.parse();
+        case LIST -> ListParser.parse(inputs);
         case MARK -> MarkParser.parse(inputs);
         case UNMARK -> UnmarkParser.parse(inputs);
         case TODO -> TodoParser.parse(inputs);
@@ -52,7 +52,7 @@ public class Parser {
         case EVENT -> EventParser.parse(inputs);
         case DELETE -> DeleteParser.parse(inputs);
         case FIND -> FindParser.parse(inputs);
-        case BYE -> ByeParser.parse();
+        case BYE -> ByeParser.parse(inputs);
         };
     }
 }
