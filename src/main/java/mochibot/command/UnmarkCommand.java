@@ -38,6 +38,9 @@ public class UnmarkCommand extends Command {
             throw new MochiBotException.InvalidTaskIndexException();
         }
         Task task = tasks.getTask(this.taskIndex);
+        if (!task.isDone()) {
+            throw new MochiBotException.DuplicateUnmarkTaskException();
+        }
         task.markNotDone();
         Storage.saveTaskList(tasks);
         return gui.displayUnmarkTask(task);

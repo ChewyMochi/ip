@@ -38,6 +38,9 @@ public class MarkCommand extends Command {
             throw new MochiBotException.InvalidTaskIndexException();
         }
         Task task = tasks.getTask(this.taskIndex);
+        if (task.isDone()) {
+            throw new MochiBotException.DuplicateMarkTaskException();
+        }
         task.markDone();
         Storage.saveTaskList(tasks);
         return gui.displayMarkTask(task);
