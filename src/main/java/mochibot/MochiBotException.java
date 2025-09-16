@@ -88,7 +88,7 @@ public class MochiBotException extends Exception {
     public static class MissingEventArgumentsException extends MochiBotException {
         private static final String errorMessage = """
                 Incorrect format detected (ꐦㅍ_ㅍ). Format is:
-                events <name> /from <date-time> /to <date-time>
+                event <name> /from <date-time> /to <date-time>
                 """;
 
         public MissingEventArgumentsException() {
@@ -143,6 +143,7 @@ public class MochiBotException extends Exception {
     public static class InvalidDateTimeException extends MochiBotException {
         private static final String errorMessage = """
                 You entered an invalid date-time ( ◡̀_◡́).
+                Correct format should be YYYY:MM:DD HH:mm.
                 """;
 
         public InvalidDateTimeException() {
