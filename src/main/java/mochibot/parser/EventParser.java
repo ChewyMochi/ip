@@ -40,6 +40,9 @@ public class EventParser {
         }
         LocalDateTime eventStartDateTime = DateTimeParser.parseInput(eventStart);
         LocalDateTime eventEndDateTime = DateTimeParser.parseInput(eventEnd);
+        if (!eventStartDateTime.isBefore(eventEndDateTime)) {
+            throw new MochiBotException.InvalidDateTimeOrder();
+        }
         Event event = new Event(taskName, eventStartDateTime, eventEndDateTime);
         return new AddCommand(event);
     }
