@@ -176,4 +176,18 @@ public class MochiBotException extends Exception {
             super(errorMessage);
         }
     }
+
+    /**
+     * Exception thrown when the end date-time is before or the same as the
+     * start date-time.
+     */
+    public static class InvalidDateTimeOrder extends MochiBotException {
+        private static final String errorMessage = """
+                Error! Your end date-time is before or the same as your start date-time ( ◡̀_◡́).
+                """;
+
+        public InvalidDateTimeOrder() {
+            super(errorMessage);
+        }
+    }
 }
