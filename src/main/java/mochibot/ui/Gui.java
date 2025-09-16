@@ -63,7 +63,7 @@ public class Gui {
     public String displayAddTask(Task task, TaskList tasks) {
         return "Got it. I've added this task:\n"
                 + task.toString() + "\n"
-                + String.format("Now you have %d task(s) in the list.%n", tasks.getSize());
+                + String.format("Now you have %d task(s) in the list.", tasks.getSize());
     }
 
     /**
@@ -76,7 +76,7 @@ public class Gui {
     public String displayRemoveTask(Task task, TaskList tasks) {
         return "Noted. I've removed this task:\n"
                 + task.toString() + "\n"
-                + String.format("Now you have %d task(s) in the list.%n", tasks.getSize());
+                + String.format("Now you have %d task(s) in the list.", tasks.getSize());
     }
 
     /**
@@ -125,7 +125,7 @@ public class Gui {
      * @return a message stating no matches were found
      */
     public String displayNoFoundTasks(String keyword) {
-        return String.format("No tasks were found given your keyword: %s%n", keyword);
+        return String.format("No tasks were found given your keyword: %s", keyword);
     }
 
     /**
